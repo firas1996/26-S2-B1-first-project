@@ -12,18 +12,34 @@ const Login = () => {
   };
   const loginHandler = () => {
     console.log(userData);
+    setUserData({
+      email: "",
+      password: "",
+    });
   };
   return (
     <div id="container">
-      <div>
+      <div className="imp">
         <label>Email</label>
-        <input name="email" type="text" onChange={inputHandler} />
+        <input
+          name="email"
+          type="text"
+          onChange={inputHandler}
+          value={userData.email}
+        />
       </div>
-      <div>
+      <div className="imp">
         <label>Password</label>
-        <input name="password" type="password" onChange={inputHandler} />
+        <input
+          name="password"
+          type="password"
+          onChange={inputHandler}
+          value={userData.password}
+        />
       </div>
-      <button onClick={loginHandler}>Login</button>
+      <div className="btn">
+        <button onClick={loginHandler}>Login</button>
+      </div>
     </div>
   );
 };
