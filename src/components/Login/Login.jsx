@@ -12,6 +12,7 @@ const Login = () => {
     setUserData({ ...userData, [name]: value });
   };
   const loginHandler = () => {
+    console.log("a");
     axios
       .post("http://localhost:1236/signin", {
         email: userData.email,
@@ -26,6 +27,7 @@ const Login = () => {
         });
       })
       .catch((e) => {
+        console.log("b");
         console.log(e);
       });
   };
