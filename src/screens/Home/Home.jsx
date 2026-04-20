@@ -1,11 +1,17 @@
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import MyFragment from "../../components/MyFragment";
 
 const Home = () => {
   const [userName, setUserName] = useState("");
+  const navigate = useNavigate();
   useEffect(() => {
     const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/login", { replace: true });
+    }
     try {
       const decode = jwtDecode(token);
       axios
@@ -21,9 +27,10 @@ const Home = () => {
     }
   }, []);
   return (
-    <div>
+    <MyFragment>
       <h1>Welcome back {userName} </h1>
-    </div>
+      <h1>Welcome back {userName} </h1>
+    </MyFragment>
   );
 };
 

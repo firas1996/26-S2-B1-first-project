@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./login.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Login = ({ setIsLoggedin }) => {
+  const navigate = useNavigate();
   const [userData, setUserData] = useState({
     email: "",
     password: "",
@@ -33,6 +35,7 @@ const Login = ({ setIsLoggedin }) => {
         console.log(res.data);
         localStorage.setItem("token", res.data.token);
         setIsLoggedin(true);
+        navigate("/");
         setUserData({
           email: "",
           password: "",

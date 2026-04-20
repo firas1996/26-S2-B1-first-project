@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Login from "./screens/Login/Login";
 import Home from "./screens/Home/Home";
+import { Route, Routes } from "react-router-dom";
 
 const App = () => {
   const [isLoggedin, setIsLoggedin] = useState(false);
@@ -29,8 +30,14 @@ const App = () => {
         height: "inherit",
       }}
     >
-      {uiElem}
-      {/* <Login /> */}
+      {/* {uiElem} */}
+      <Routes>
+        <Route
+          path="/login"
+          element={<Login setIsLoggedin={setIsLoggedin} />}
+        />
+        <Route path="/" element={<Home />} />
+      </Routes>
     </div>
   );
 };
