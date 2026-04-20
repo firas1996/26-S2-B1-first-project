@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./login.css";
 import axios from "axios";
 
-const Login = () => {
+const Login = ({ setIsLoggedin }) => {
   const [userData, setUserData] = useState({
     email: "",
     password: "",
@@ -32,6 +32,7 @@ const Login = () => {
       .then((res) => {
         console.log(res.data);
         localStorage.setItem("token", res.data.token);
+        setIsLoggedin(true);
         setUserData({
           email: "",
           password: "",

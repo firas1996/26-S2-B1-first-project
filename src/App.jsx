@@ -14,7 +14,7 @@ const App = () => {
     // }
   }, []);
   // console.log("outside");
-  let uiElem = <Login />;
+  let uiElem = <Login setIsLoggedin={setIsLoggedin} />;
   if (isLoggedin) {
     uiElem = <Home />;
   }
