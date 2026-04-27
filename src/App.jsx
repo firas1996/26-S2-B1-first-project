@@ -1,27 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Login from "./screens/Login/Login";
 import Home from "./screens/Home/Home";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import Users from "./screens/Users/Users";
 import UserDetails from "./screens/Users/UserDetails";
 
 const App = () => {
-  const [isLoggedin, setIsLoggedin] = useState(false);
+  const navigate = useNavigate();
   useEffect(() => {
-    // console.log("effect");
     if (localStorage.getItem("token")) {
-      setIsLoggedin(true);
+      navigate("/");
     }
-    // else {
-    //   setIsLoggedin(false);
-    // }
   }, []);
-  // console.log("outside");
-  let uiElem = <Login setIsLoggedin={setIsLoggedin} />;
-  if (isLoggedin) {
-    uiElem = <Home />;
-  }
-
   return (
     <div
       style={{
@@ -32,12 +22,8 @@ const App = () => {
         height: "inherit",
       }}
     >
-      {/* {uiElem} */}
       <Routes>
-        <Route
-          path="/login"
-          element={<Login setIsLoggedin={setIsLoggedin} />}
-        />
+        <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home />} />
         <Route path="/users" element={<Users />} />
         <Route path="/users/:id" element={<UserDetails />} />

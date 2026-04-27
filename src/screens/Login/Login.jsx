@@ -1,25 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./login.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const Login = ({ setIsLoggedin }) => {
+const Login = () => {
   const navigate = useNavigate();
   const [userData, setUserData] = useState({
     email: "",
     password: "",
   });
 
-  ///////////////////////////////
-  // useEffect(() => {
-  //   console.log("effect");
-  //   const timer = setTimeout(() => {}, 1000);
-  //   return () => {
-  //     clearTimeout(timer);
-  //     console.log("clean");
-  //   };
-  // }, [userData]);
-  //////////////////////////////
   const inputHandler = ({ target }) => {
     const { name, value } = target;
     setUserData({ ...userData, [name]: value });
@@ -34,7 +24,6 @@ const Login = ({ setIsLoggedin }) => {
       .then((res) => {
         console.log(res.data);
         localStorage.setItem("token", res.data.token);
-        setIsLoggedin(true);
         navigate("/");
         setUserData({
           email: "",
