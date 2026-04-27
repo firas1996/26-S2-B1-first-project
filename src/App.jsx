@@ -3,6 +3,7 @@ import Login from "./screens/Login/Login";
 import Home from "./screens/Home/Home";
 import { Route, Routes } from "react-router-dom";
 import Users from "./screens/Users/Users";
+import UserDetails from "./screens/Users/UserDetails";
 
 const App = () => {
   const [isLoggedin, setIsLoggedin] = useState(false);
@@ -39,6 +40,7 @@ const App = () => {
         />
         <Route path="/" element={<Home />} />
         <Route path="/users" element={<Users />} />
+        <Route path="/users/:id" element={<UserDetails />} />
       </Routes>
     </div>
   );

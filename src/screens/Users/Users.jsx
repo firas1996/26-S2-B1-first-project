@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Users = () => {
   const navigate = useNavigate();
@@ -12,7 +12,7 @@ const Users = () => {
         .then((res) => {
           console.log(res);
           setUsersData(
-            res.data.data.users.map((item) => {
+            res.data.data.map((item) => {
               return { id: item._id, name: item.name };
             }),
           );
@@ -24,14 +24,16 @@ const Users = () => {
       console.log(error);
     }
   }, []);
-  console.log(usersData);
+  const usersItem = usersData.map((item) => {
+    return (
+      <Link to={`/users/${item.id}`}>
+        <li key={item.id}>{item.name}</li>
+      </Link>
+    );
+  });
   return (
     <div>
-      <ul>
-        <li>User1</li>
-        <li>User2</li>
-        <li>User3</li>
-      </ul>
+      <ul>{usersItem}</ul>
     </div>
   );
 };
