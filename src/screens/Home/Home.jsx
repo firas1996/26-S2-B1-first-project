@@ -30,6 +30,13 @@ const Home = () => {
     <MyFragment>
       <h1>Welcome back {userName} </h1>
       <h1>Welcome back {userName} </h1>
+      <button
+        onClick={() => {
+          navigate("/users");
+        }}
+      >
+        Go to usetrs Page
+      </button>
     </MyFragment>
   );
 };

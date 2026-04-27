@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Login from "./screens/Login/Login";
 import Home from "./screens/Home/Home";
 import { Route, Routes } from "react-router-dom";
+import Users from "./screens/Users/Users";
 
 const App = () => {
   const [isLoggedin, setIsLoggedin] = useState(false);
@@ -37,6 +38,7 @@ const App = () => {
           element={<Login setIsLoggedin={setIsLoggedin} />}
         />
         <Route path="/" element={<Home />} />
+        <Route path="/users" element={<Users />} />
       </Routes>
     </div>
   );
