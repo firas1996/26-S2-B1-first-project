@@ -17,10 +17,10 @@ const UserDetails = () => {
       });
   }, [id]);
   return (
-    <div>
+    <>
       <h1>User Name: {user.name} </h1>
       <h1>User Email: {user.email} </h1>
-    </div>
+    </>
   );
 };
 
